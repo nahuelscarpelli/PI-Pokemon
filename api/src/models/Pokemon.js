@@ -7,22 +7,22 @@ module.exports = (sequelize) => {
     "pokemon",
     {
       //UUID = Universally Unique Identifier
-      ID: {
+      id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false, //ver si es necesario
         primaryKey: true,
       },
-      Name: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      Image: {
+      image: {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      Hp: {
+      hp: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
           isInt: true,
         },
       },
-      Attack: {
+      attack: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
           isInt: true,
         },
       },
-      Defense: {
+      defense: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
           isInt: true,
         },
       },
-      Speed: {
+      speed: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -54,7 +54,7 @@ module.exports = (sequelize) => {
           isInt: true,
         },
       },
-      Height: {
+      height: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -62,7 +62,7 @@ module.exports = (sequelize) => {
           isInt: true,
         },
       },
-      Weight: {
+      weight: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -70,7 +70,7 @@ module.exports = (sequelize) => {
           isInt: true,
         },
       },
-      Create: {
+      create: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
