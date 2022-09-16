@@ -20,7 +20,7 @@ function getPokemons(req, res, next) {
         localPokemons = localResponse.filter((pokemon) => {
           return pokemon.name.toLowerCase().includes(nameQuery);
         });
-        return res.json([...localPokemons, ...remotePokemons].slice(0, 9)); //final
+        return res.json([...localPokemons, ...remotePokemons]); //final
       })
       .catch((error) => next(error));
   } else {
@@ -36,6 +36,8 @@ function getPokemons(req, res, next) {
       .catch((error) => next(error));
   }
 }
+
+// GEY BY ID
 
 function getPokemonById(req, res, next) {
     const id = req.params.id;
@@ -63,7 +65,33 @@ function getPokemonById(req, res, next) {
   }
 }
 
-function createPokemon(req, res, next) {}
+// POST
+
+function createPokemon(req, res, next) {
+
+  const { name, image, type, hp, attack, defense, speed, height, weight } = req.body;
+  Pokemon.create({
+    name,
+    image,
+    type,
+    hp,
+    attack,
+    defense,
+    speed, 
+    height, 
+    weight
+  })
+    .then((pokemonCreated) => {
+      return pokemonCreated.setTypes(type);
+    })
+    .then((newPokemon) => {
+      return res.json({
+        message: "Pokemon created successfully",
+      });
+    })
+    .catch((error) => next(error));
+
+}
 
 module.exports = {
   getPokemons,
