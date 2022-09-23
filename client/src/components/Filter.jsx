@@ -1,0 +1,40 @@
+import React from "react";
+import styles from "../css/FilterBar.module.css";
+import { filterPokemonByTypes } from "../redux/action";
+import { useDispatch } from "react-redux";
+
+export default function Filter() {
+  const dispatch = useDispatch();
+
+
+  function handleFilterValue(e) {
+    e.preventDefault(e);
+    dispatch(filterPokemonByTypes(e.target.value));
+  }
+
+  return (
+    <div >
+      <div>
+        <select
+        className={styles.filterType}
+          name="filterTypes"
+          id="filterTypes"
+          onChange={(e) => handleFilterValue(e)}
+        >
+          <option value="All">View all Types</option>
+          <option value="gluten free">Gluten Free</option>
+          <option value="ketogenic">Ketogenic</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="lacto ovo vegetarian">Lacto-Ovo-Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="pescatarian">Pescatarian</option>
+          <option value="paleolithic">Paleolithic</option>
+          <option value="primal">Primal</option>
+          <option value="whole 30">Whole 30</option>
+          <option value="dairy free">Dairy free</option>
+          <option value="fodmap friendly">Fodmap friendly</option>
+        </select>
+      </div>
+    </div>
+  );
+}
